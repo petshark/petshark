@@ -1,0 +1,7 @@
+# by default, remove all files from the docker build context
+/*
+
+# the following folders are available in the build context
+!/docker/*
+!/backend/*
+!/frontend/*
