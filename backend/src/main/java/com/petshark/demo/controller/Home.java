@@ -8,8 +8,11 @@ class Home {
 
     @RequestMapping("/")
     String getIndex() {
-        System.out.println("HELLO WORLD");
         return "index";
     }
 
+    @RequestMapping("/admin")
+    String getAdmin() {
+        return "admin";
+    }
 }
