@@ -9,13 +9,10 @@ EXPOSE 5432
 # original location: /var/lib/postgresql/data
 ENV PGDATA=/postgres-data
 
-# root database password
-ENV POSTGRES_PASSWORD=''
-
-# name of regular user
+# name of database user
 ENV POSTGRES_USER=''
 
-# password of regular user
+# password of database user
 ENV POSTGRES_PASSWORD=''
 
 # name of database
