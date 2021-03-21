@@ -10,13 +10,13 @@ EXPOSE 5432
 ENV PGDATA=/postgres-data
 
 # root database password
-ENV POSTGRES_PASSWORD=
+ENV POSTGRES_PASSWORD=''
 
 # name of regular user
-ENV POSTGRES_USER=
+ENV POSTGRES_USER=''
 
 # password of regular user
-ENV POSTGRES_PASSWORD=
+ENV POSTGRES_PASSWORD=''
 
 # name of database
 ENV POSTGRES_DB=${POSTGRES_USER}}

@@ -15,13 +15,13 @@ ENV ADMINER_AUTOLOGIN=false
 ENV ADMINER_DB_DRIVER=pgsql
 
 # autologin: database server location
-ENV ADMINER_DB_SERVER=
+ENV ADMINER_DB_SERVER=''
 
 # autologin: database name
-ENV ADMINER_DB_NAME=
+ENV ADMINER_DB_NAME=''
 
 # autologin: database user
-ENV ADMINER_DB_USER=
+ENV ADMINER_DB_USER=''
 
 # autologin: database password
-ENV ADMINER_DB_PASSWORD=
+ENV ADMINER_DB_PASSWORD=''
