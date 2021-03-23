@@ -13,7 +13,7 @@ ReactJS app with custom configuration.
 
 ### Features
 - Bootstrap (utility classes)
-- Route configuration with `react-router`
+- Route configuration with 'react-router-dom'
 - Fontawesome icons library
 
 ## Running the app
