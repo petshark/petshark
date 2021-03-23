@@ -11,6 +11,9 @@
             "@styles/*": [
                 "./src/scss/*"
             ],
+            "@assets/*": [
+                "./src/assets/*"
+            ]
         }
     },
     "exclude": [
