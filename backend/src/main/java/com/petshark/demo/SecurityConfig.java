@@ -20,9 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Check 'csrf' settings if something does not work as intended
-        http.authorizeRequests().antMatchers("/admin").hasRole("ADMIN").antMatchers("/**").permitAll().and()
-                .formLogin();
+        // Disable csrf to make loggin in through cURL easier
+        http.csrf().disable().authorizeRequests().antMatchers("/admin").hasRole("ADMIN").antMatchers("/**").permitAll()
+                .and().formLogin();
     }
 
     @Override
