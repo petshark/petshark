@@ -1,6 +1,9 @@
 version: '3.1'
 
 services:
+  ###########
+  # BACKEND #
+  ###########
   backend:
     build:
       context: ./
@@ -24,10 +27,26 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_USER_PASSWORD: ${DB_USER_PASSWORD}
-  # frontend:
-  #   build:
-  #     context: ./
-  #     dockerfile: ./docker/frontend/Dockerfile
+  ############
+  # FRONTEND #
+  ############
+  frontend:
+    build:
+      context: ./
+      dockerfile: ./docker/frontend/dev.Dockerfile
+    volumes:
+      - ./frontend:/petshark # bind-mount source code
+      - npm_cache:/home/node/.npm # npm cache for non-root
+    ports:
+      - ${DC_FRONTEND_PORT}:5000
+    environment:
+      # Change uid and gid of non-root user (useful when working with bind-mounts)
+      FRONTEND_UID: ${FRONTEND_UID}
+      FRONTEND_GID: ${FRONTEND_GID}
+      # TODO: pass on backend endpoint
+  ############
+  # DATABASE #
+  ############
   database:
     build:
       context: ./
@@ -41,6 +60,9 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
+  ###########
+  # ADMINER #
+  ###########
   adminer:
     build:
       context: ./
@@ -59,3 +81,4 @@ services:
 volumes:
   db_data:
   mvn_cache:
+  npm_cache:
