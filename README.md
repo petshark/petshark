@@ -17,5 +17,7 @@
 ## Docker Cheat Sheet (production)
 - `docker build --file ./docker/adminer/Dockerfile --tag ps-adminer .`
 - `docker run -p 80:8080 -e ADMINER_AUTOLOGIN=true ps-adminer:latest`
+- `docker inspect <image-name>`
+- `docker history <image-name>`
 - `docker volume ls`
 - `docker volume rm <volume-name>`
