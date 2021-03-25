@@ -10,4 +10,4 @@ source "$ROOT/bin/functions.sh" || exit 2
 require "$ROOT/.env"
 
 # build docker image
-docker build --file "$ROOT/docker/frontend/Dockerfile" --tag ps-frontend "$ROOT"
+docker build --file "$ROOT/docker/frontend/prod.Dockerfile" --tag ps-frontend "$ROOT"
