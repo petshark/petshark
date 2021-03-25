@@ -7,8 +7,12 @@
   them with configuration tuned for development.
 
 ## Docker Compose Cheat Sheet (development)
-- `docker-compose up`
-- `docker-compose down`
+- start all containers: `docker-compose up`
+- build and start all containers: `docker-compose up --build`
+- stop all containers: `docker-compose down`
+- build single container: `docker-compose build <service-name>`
+- run single container: `docker-compose run <service-name>`
+- run single container with different command: e.g. `docker-compose run <service-name> bash -c 'echo hello world'`
 
 ## Docker Cheat Sheet (production)
 - `docker build --file ./docker/adminer/Dockerfile --tag ps-adminer .`
