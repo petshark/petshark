@@ -37,7 +37,7 @@ module.exports = {
     },
     devtool: "source-map",
     devServer: {
-        contentBase: path.join(__dirname, "build"),
+        contentBase: path.join(__dirname, "public"), // serve static files
         compress: true,
         liveReload: true,
         host: '0.0.0.0',

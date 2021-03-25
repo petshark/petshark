@@ -4,7 +4,7 @@ ReactJS app with custom configuration.
 ### Project structure
 - `/public` - stores html template page where React app is rendered. Non-react imports can be added here directly, i.e. *favicon.ico* goes here
 - `/src` - stores all files that make up the React app
-    - `/src/index.js - the entrypoint of the app
+    - `/src/index.js` - the entrypoint of the app
     - `/src/pages` - stores website pages
     - `/src/components` - stores elements that are used by multiple pages
     - `/src/scss` - stores scss files for every element and page
