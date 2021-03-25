@@ -1,10 +1,29 @@
 version: '3.1'
 
 services:
-  # backend:
-  #   build:
-  #     context: ./
-  #     dockerfile: ./docker/backend/Dockerfile
+  backend:
+    build:
+      context: ./
+      dockerfile: ./docker/backend/dev.Dockerfile
+    depends_on:
+      - database
+    volumes:
+      - ./backend:/petshark # bind-mount source code
+      - mvn_cache:/root/.m2 # maven cache for root
+      - mvn_cache:/home/backend/.m2 # maven cache for non-root
+    ports:
+      - ${DC_BACKEND_TOMCAT_PORT}:8080
+      - ${DC_BACKEND_DEBUG_PORT}:5005
+    environment:
+      # Change uid and gid of non-root user (useful when working with bind-mounts)
+      BACKEND_UID: ${BACKEND_UID}
+      BACKEND_GID: ${BACKEND_GID}
+      # See application.properties for details
+      DB_HOST: ${DB_HOST}
+      DB_PORT: 5432 # internal docker port
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_USER_PASSWORD: ${DB_USER_PASSWORD}
   # frontend:
   #   build:
   #     context: ./
@@ -13,7 +32,7 @@ services:
     build:
       context: ./
       dockerfile: ./docker/database/Dockerfile
-    volumes: 
+    volumes:
       - db_data:/postgres-data
     ports:
       - ${DC_POSTGRES_PORT}:5432
@@ -39,3 +58,4 @@ services:
       ADMINER_DB_PASSWORD: ${DB_USER_PASSWORD}
 volumes:
   db_data:
+  mvn_cache:
