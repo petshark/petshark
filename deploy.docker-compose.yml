@@ -49,6 +49,10 @@ services:
       BACKEND_USER_PASSWORD: user
       BACKEND_ADMIN_USERNAME: admin
       BACKEND_ADMIN_PASSWORD: admin
+      # Backend and frontend URL
+      BACKEND_BASE_URL: ${BACKEND_BASE_URL}
+      PYTHON_BASE_URL: ${PYTHON_BASE_URL}
+      FRONTEND_BASE_URL: ${FRONTEND_BASE_URL}
   ##########
   # PYTHON #
   ##########
@@ -74,6 +78,10 @@ services:
       BACKEND_USER_PASSWORD: user
       BACKEND_ADMIN_USERNAME: admin
       BACKEND_ADMIN_PASSWORD: admin
+      # Backend and frontend URL
+      BACKEND_BASE_URL: ${BACKEND_BASE_URL}
+      PYTHON_BASE_URL: ${PYTHON_BASE_URL}
+      FRONTEND_BASE_URL: ${FRONTEND_BASE_URL}
   ############
   # DATABASE #
   ############
