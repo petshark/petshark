@@ -8,7 +8,7 @@ function Home() {
 
   console.log(process.env.BACKEND_USER_USERNAME);
   React.useEffect(() => {
-    axios.get('/example.json')
+    axios.get('/pets')
       .then(function (response) {
         console.log(response);
       })
