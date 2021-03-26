@@ -13,8 +13,8 @@ services:
       - apache_certs:/usr/local/apache2/md
       - apache_logs:/usr/local/apache2/logs
     ports:
-    - 80:80
-    - 443:443
+      - 80:80
+      - 443:443
     environment:
       APACHE_DOMAIN: ${APACHE_DOMAIN}
       ADMIN_EMAIL: ${ADMIN_EMAIL}
@@ -44,6 +44,31 @@ services:
       DB_USER: ${DB_USER}
       DB_USER_PASSWORD: ${DB_USER_PASSWORD}
       # API/Login-form auth credentials
+      # TODO replace with non-hardcoded values
+      BACKEND_USER_USERNAME: user
+      BACKEND_USER_PASSWORD: user
+      BACKEND_ADMIN_USERNAME: admin
+      BACKEND_ADMIN_PASSWORD: admin
+  ##########
+  # PYTHON #
+  ##########
+  python:
+    build:
+      context: ./
+      dockerfile: ./docker/python/prod.Dockerfile
+    volumes:
+      - pip_cache:/root/.cache/pip # pip cache for root
+      - pip_cache:/home/python/.cache/pip # pip cache for non-root
+    ports:
+      - ${DC_PYTHON_PORT}:7000
+    environment:
+      # database config
+      DB_HOST: ${DB_HOST}
+      DB_PORT: 5432 # internal postgres port
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_USER_PASSWORD: ${DB_USER_PASSWORD}
+      # java auth credentials
       # TODO replace with non-hardcoded values
       BACKEND_USER_USERNAME: user
       BACKEND_USER_PASSWORD: user
@@ -87,4 +112,5 @@ volumes:
   apache_certs:
   apache_logs:
   mvn_cache:
+  pip_cache:
   db_data:
