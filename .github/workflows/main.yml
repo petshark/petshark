@@ -35,6 +35,9 @@ jobs:
           DB_NAME=${{ secrets.DB_NAME }}
           DB_USER=${{ secrets.DB_USER }}
           DB_USER_PASSWORD=${{ secrets.DB_USER_PASSWORD }}
+          APACHE_DOMAIN=${{ secrets.APACHE_DOMAIN }}
+          ADMIN_EMAIL=${{ secrets.ADMIN_EMAIL }}
+          APACHE_LOG_DIR=${{ secrets.APACHE_LOG_DIR }}
           END_OF_HEREDOC
 
       # Build and run docker containers
