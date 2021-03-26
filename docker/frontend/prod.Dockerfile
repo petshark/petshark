@@ -14,5 +14,7 @@ RUN [ "npm", "run", "build" ]
 
 FROM httpd:2.4.46-alpine as serve
 
+COPY docker/frontend/httpd.conf /usr/local/apache2/conf/httpd.conf
+
 # host static files with apache
 COPY --from=build /petshark/build /usr/local/apache2/htdocs/
