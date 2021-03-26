@@ -9,6 +9,8 @@ services:
     build:
       context: ./
       dockerfile: ./docker/apache/Dockerfile
+    volumes:
+      - apache_certs: /usr/local/apache2/md
     ports:
     - 80:80
     - 443:443
@@ -51,3 +53,4 @@ services:
       ADMINER_DB_PASSWORD: ${DB_USER_PASSWORD}
 volumes:
   db_data:
+  apache_certs:
