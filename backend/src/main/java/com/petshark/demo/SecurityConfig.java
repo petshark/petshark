@@ -1,5 +1,6 @@
 package com.petshark.demo;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,6 +13,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Value("${authentication.credentials.user.username}")
+    private String USER_USERNAME;
+    @Value("${authentication.credentials.user.password}")
+    private String USER_PASSWORD;
+    @Value("${authentication.credentials.admin.username}")
+    private String ADMIN_USERNAME;
+    @Value("${authentication.credentials.admin.password}")
+    private String ADMIN_PASSWORD;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -28,7 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN").and()
-                .withUser("user").password(passwordEncoder().encode("user")).roles("USER");
+        auth.inMemoryAuthentication().withUser(ADMIN_USERNAME).password(passwordEncoder().encode(ADMIN_PASSWORD))
+                .roles("ADMIN").and().withUser(USER_USERNAME).password(passwordEncoder().encode(USER_PASSWORD))
+                .roles("USER");
     }
 }

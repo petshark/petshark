@@ -27,6 +27,11 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_USER_PASSWORD: ${DB_USER_PASSWORD}
+      # API/Login-form auth credentials
+      BACKEND_USER_USERNAME: ${BACKEND_USER_USERNAME}
+      BACKEND_USER_PASSWORD: ${BACKEND_USER_PASSWORD}
+      BACKEND_ADMIN_USERNAME: ${BACKEND_ADMIN_USERNAME} 
+      BACKEND_ADMIN_PASSWORD: ${BACKEND_ADMIN_PASSWORD}
   ############
   # FRONTEND #
   ############
@@ -43,6 +48,11 @@ services:
       # Change uid and gid of non-root user (useful when working with bind-mounts)
       FRONTEND_UID: ${FRONTEND_UID}
       FRONTEND_GID: ${FRONTEND_GID}
+      # API auth credentials
+      BACKEND_USER_USERNAME: ${BACKEND_USER_USERNAME}
+      BACKEND_USER_PASSWORD: ${BACKEND_USER_PASSWORD}
+      BACKEND_ADMIN_USERNAME: ${BACKEND_ADMIN_USERNAME} 
+      BACKEND_ADMIN_PASSWORD: ${BACKEND_ADMIN_PASSWORD}
       # TODO: pass on backend endpoint
   ############
   # DATABASE #
