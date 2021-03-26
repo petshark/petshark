@@ -19,6 +19,36 @@ services:
       APACHE_DOMAIN: ${APACHE_DOMAIN}
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       APACHE_LOG_DIR: /usr/local/apache2/logs
+  ###########
+  # BACKEND #
+  ###########
+  backend:
+    build:
+      context: ./
+      dockerfile: ./docker/backend/prod.Dockerfile
+      args:
+        JAR_NAME: demo-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - database
+    volumes:
+      - mvn_cache:/root/.m2 # maven cache for root
+      - mvn_cache:/home/backend/.m2 # maven cache for non-root
+    ports:
+      - ${DC_BACKEND_TOMCAT_PORT}:8080
+      - ${DC_BACKEND_DEBUG_PORT}:5005 # block port in firewall
+    environment:
+      # See application.properties for details
+      DB_HOST: ${DB_HOST}
+      DB_PORT: 5432 # internal postgres port
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_USER_PASSWORD: ${DB_USER_PASSWORD}
+      # API/Login-form auth credentials
+      # TODO replace with non-hardcoded values
+      BACKEND_USER_USERNAME: user
+      BACKEND_USER_PASSWORD: user
+      BACKEND_ADMIN_USERNAME: admin
+      BACKEND_ADMIN_PASSWORD: admin
   ############
   # DATABASE #
   ############
@@ -54,6 +84,7 @@ services:
       ADMINER_DB_USER: ${DB_USER}
       ADMINER_DB_PASSWORD: ${DB_USER_PASSWORD}
 volumes:
-  db_data:
   apache_certs:
   apache_logs:
+  mvn_cache:
+  db_data:
