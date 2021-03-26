@@ -10,7 +10,7 @@ services:
       context: ./
       dockerfile: ./docker/apache/Dockerfile
     volumes:
-      - apache_certs: /usr/local/apache2/md
+      - apache_certs:/usr/local/apache2/md
     ports:
     - 80:80
     - 443:443
