@@ -1,9 +1,11 @@
 FROM node:14.16.0-buster as build
 
+# create /petshark folder with correct permissions
+RUN mkdir /petshark && chown node:node /petshark
+WORKDIR /petshark
+
 # change to non-root
 USER node
-
-WORKDIR /petshark
 
 COPY ./frontend /petshark
 
