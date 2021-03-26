@@ -35,6 +35,34 @@ services:
       # Backend and frontend URL
       BACKEND_BASE_URL: ${BACKEND_BASE_URL}
       FRONTEND_BASE_URL: ${FRONTEND_BASE_URL}
+  ##########
+  # PYTHON #
+  ##########
+  python:
+    build:
+      context: ./
+      dockerfile: ./docker/python/dev.Dockerfile
+    volumes:
+      - ./python:/python # bind-mount source code
+      - pip_cache:/root/.cache/pip # pip cache for root
+      - pip_cache:/home/python/.cache/pip # pip cache for non-root
+    ports:
+      - ${DC_PYTHON_PORT}:6000
+    environment:
+      # Change uid and gid of non-root user (useful when working with bind-mounts)
+      PYTHON_UID: ${PYTHON_UID}
+      PYTHON_GID: ${PYTHON_GID}
+      # database config
+      DB_HOST: ${DB_HOST}
+      DB_PORT: 5432 # internal postgres port
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_USER_PASSWORD: ${DB_USER_PASSWORD}
+      # java auth credentials
+      BACKEND_USER_USERNAME: ${BACKEND_USER_USERNAME}
+      BACKEND_USER_PASSWORD: ${BACKEND_USER_PASSWORD}
+      BACKEND_ADMIN_USERNAME: ${BACKEND_ADMIN_USERNAME}
+      BACKEND_ADMIN_PASSWORD: ${BACKEND_ADMIN_PASSWORD}
   ############
   # FRONTEND #
   ############
@@ -97,4 +125,5 @@ services:
 volumes:
   db_data:
   mvn_cache:
+  pip_cache:
   npm_cache:
