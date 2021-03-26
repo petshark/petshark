@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "/api"
+    baseURL: "http://localhost:8080/api"
 });
 
 instance.interceptors.request.use(
     (config) => {
-        const basicAuthCredentials = process.env.BACKEND_USER_USERNAME + ":" + process.env.BACKEND_USER_PASSWORD;
+        const basicAuthCredentials = btoa(process.env.BACKEND_USER_USERNAME + ":" + process.env.BACKEND_USER_PASSWORD);
         config.headers.common["Authorization"] = "Basic " + basicAuthCredentials;
         return config;
     },
