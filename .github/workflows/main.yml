@@ -30,12 +30,12 @@ jobs:
         run: |
           cat <<END_OF_HEREDOC > .env
           DC_BACKEND_TOMCAT_PORT=${{ secrets.DC_BACKEND_TOMCAT_PORT }}
-          BACKEND_BASE_URL=https://${{ secrets.APACHE_DOMAIN }}/backend/
+          BACKEND_BASE_URL=https://${{ secrets.APACHE_DOMAIN }}/backend
           DC_BACKEND_DEBUG_PORT=${{ secrets.DC_BACKEND_DEBUG_PORT }}
           DC_PYTHON_PORT=${{ secrets.DC_PYTHON_PORT }}
-          PYTHON_BASE_URL=https://${{ secrets.APACHE_DOMAIN }}/python/
+          PYTHON_BASE_URL=https://${{ secrets.APACHE_DOMAIN }}/python
           DC_FRONTEND_PORT=${{ secrets.DC_FRONTEND_PORT }}
-          FRONTEND_BASE_URL=https://${{ secrets.APACHE_DOMAIN }}/frontend/
+          FRONTEND_BASE_URL=https://${{ secrets.APACHE_DOMAIN }}/frontend
           ROUTER_BASENAME=/frontend
           DC_POSTGRES_PORT=${{ secrets.DC_POSTGRES_PORT }}
           DC_ADMINER_PORT=${{ secrets.DC_ADMINER_PORT }}
