@@ -2,6 +2,20 @@
 version: '3.1'
 
 services:
+  ##########
+  # APACHE #
+  ##########
+  apache:
+    build:
+      context: ./
+      dockerfile: ./docker/apache/Dockerfile
+    ports:
+    - 80:80
+    - 443:443
+    environment:
+      APACHE_DOMAIN: ${APACHE_DOMAIN}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      APACHE_LOG_DIR: /usr/local/apache2/logs
   ############
   # DATABASE #
   ############

@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: path.resolve(__dirname, "src", "index.js"),
@@ -29,6 +30,7 @@ module.exports = {
             "@pages": path.resolve(__dirname, "src", "pages"),
             "@styles": path.resolve(__dirname, "src", "scss"),
             "@assets": path.resolve(__dirname, "src", "assets"),
+            "@src": path.resolve(__dirname, "src")
         }
     },
     output: {
@@ -57,6 +59,7 @@ module.exports = {
         //     // to: path.join(__dirname, "build")
         //     // }
         //     // ],
-        // })
+        // }),
+        new Dotenv()
     ],
 };
