@@ -11,6 +11,7 @@ services:
       dockerfile: ./docker/apache/Dockerfile
     volumes:
       - apache_certs:/usr/local/apache2/md
+      - apache_logs:/usr/local/apache2/logs
     ports:
     - 80:80
     - 443:443
@@ -54,3 +55,4 @@ services:
 volumes:
   db_data:
   apache_certs:
+  apache_logs:
