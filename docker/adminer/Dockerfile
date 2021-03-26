@@ -6,6 +6,7 @@ EXPOSE 8080
 # install adminer plugins
 ENV ADMINER_PLUGINS=auto-login
 COPY ./docker/adminer/plugins/auto-login.php /var/www/html/plugins/auto-login.php
+COPY ./docker/adminer/plugins/auto-login-deploy.php /var/www/html/plugins/auto-login-deploy.php
 
 # login automatically when set to true
 ENV ADMINER_AUTOLOGIN=false
