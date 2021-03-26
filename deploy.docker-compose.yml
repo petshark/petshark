@@ -105,6 +105,7 @@ services:
       BACKEND_BASE_URL: ${BACKEND_BASE_URL}
       PYTHON_BASE_URL: ${PYTHON_BASE_URL}
       FRONTEND_BASE_URL: ${FRONTEND_BASE_URL}
+      ROUTER_BASENAME: ${ROUTER_BASENAME}
   ############
   # DATABASE #
   ############

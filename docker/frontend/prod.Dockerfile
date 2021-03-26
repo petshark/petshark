@@ -8,6 +8,7 @@ WORKDIR /petshark
 USER node
 
 COPY ./frontend /petshark
+COPY ./.env /petshark/.env
 
 RUN [ "npm", "install" ]
 RUN [ "npm", "run", "build" ]

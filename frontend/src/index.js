@@ -11,7 +11,7 @@ import Stuff from '@pages/stuff';
 import About from '@pages/about';
 
 ReactDOM.render(
-    <Router>
+    <Router basename={process.env.ROUTER_BASENAME}>
         <Route exact path="/">
             <Home />
         </Route>
