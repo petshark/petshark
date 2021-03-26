@@ -46,6 +46,10 @@ jobs:
           APACHE_DOMAIN=${{ secrets.APACHE_DOMAIN }}
           ADMIN_EMAIL=${{ secrets.ADMIN_EMAIL }}
           APACHE_LOG_DIR=${{ secrets.APACHE_LOG_DIR }}
+          BACKEND_USER_USERNAME=${{ secrets.BACKEND_USER_USERNAME }}
+          BACKEND_USER_PASSWORD=${{ secrets.BACKEND_USER_PASSWORD }}
+          BACKEND_ADMIN_USERNAME=${{ secrets.BACKEND_ADMIN_USERNAME }}
+          BACKEND_ADMIN_PASSWORD=${{ secrets.BACKEND_ADMIN_PASSWORD }}
           END_OF_HEREDOC
 
       # Build and run docker containers
