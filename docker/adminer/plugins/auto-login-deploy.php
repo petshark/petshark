@@ -14,12 +14,12 @@ function adminer_object() {
 
     // https://github.com/vrana/adminer/blob/4742bde873598e3017c566777b37e281996514b5/editor/sqlite.php
     function database() {
-      return getenv('DB_NAME');
+      return getenv('ADMINER_DB_NAME');
     }
 
     function credentials() {
-      $server = getenv('DB_HOST');
-      $user = getenv('DB_USER');
+      $server = getenv('ADMINER_DB_SERVER');
+      $user = getenv('ADMINER_DB_USER');
 
       return array($server, $user, get_password());
     }
