@@ -6,3 +6,9 @@
 !/backend/*
 !/frontend/*
 !/python/*
+
+# always ignore these types of files
+/frontend/build
+/frontend/node_modules
+/frontend/npm-debug.log
+/backend/target

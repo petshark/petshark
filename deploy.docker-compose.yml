@@ -83,6 +83,29 @@ services:
       PYTHON_BASE_URL: ${PYTHON_BASE_URL}
       FRONTEND_BASE_URL: ${FRONTEND_BASE_URL}
   ############
+  # FRONTEND #
+  ############
+  frontend:
+    build:
+      context: ./
+      dockerfile: ./docker/frontend/prod.Dockerfile
+    volumes:
+      # NOTE: make sure user is non-root during build
+      - npm_cache:/home/node/.npm # npm cache for non-root
+    ports:
+      - ${DC_FRONTEND_PORT}:5000
+    environment:
+      # API auth credentials
+      # TODO replace with non-hardcoded values
+      BACKEND_USER_USERNAME: user
+      BACKEND_USER_PASSWORD: user
+      BACKEND_ADMIN_USERNAME: admin
+      BACKEND_ADMIN_PASSWORD: admin
+      # Backend and frontend URL
+      BACKEND_BASE_URL: ${BACKEND_BASE_URL}
+      PYTHON_BASE_URL: ${PYTHON_BASE_URL}
+      FRONTEND_BASE_URL: ${FRONTEND_BASE_URL}
+  ############
   # DATABASE #
   ############
   database:
@@ -121,4 +144,5 @@ volumes:
   apache_logs:
   mvn_cache:
   pip_cache:
+  npm_cache:
   db_data:
