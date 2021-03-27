@@ -7,6 +7,23 @@ import stock2 from '@assets/stock2.jpeg';
 import stock3 from '@assets/stock3.jpeg';
 
 function Model() {
+  const [title, setTitle] = React.useState("");
+  const [director, setDirector] = React.useState("");
+  const [actors, setActors] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [genres, setGenres] = React.useState([]);
+  const [duration, setDuration] = React.useState("");
+  const [budget, setBudget] = React.useState("");
+  const data = {
+    "title": title,
+    "director": director,
+    "actors": actors,
+    "description": description,
+    "genres": genres,
+    "duration": duration,
+    "budget": budget
+  }
+
   return (
     <div className="model">
       <Title />
@@ -19,14 +36,14 @@ function Model() {
               <h2 className="m-0 text-muted">Movie Idea</h2>
             </label>
             <div className="col m-auto ">
-              <input type="text" className="form-control" placeholder="Movie title" />
+              <input type="text" className="form-control" placeholder="Movie title" value={title} onChange={(event) => setTitle(event.target.value)} />
             </div>
           </div>
           <div className="form-group row">
             <div className="col-4">
               <div className="form-group">
                 <label>Genre</label>
-                <select className="form-control" multiple>
+                <select className="form-control" multiple value={genres} onChange={(event) => setGenres(Array.from(event.target.selectedOptions, option => option.value))}>
                   <option>Action</option>
                   <option>Drama</option>
                   <option>Comedy</option>
@@ -37,7 +54,7 @@ function Model() {
             <div className="col-4">
               <div className="form-group">
                 <label>Target duration (in minutes)</label>
-                <input type="text" className="form-control" placeholder="Duration" />
+                <input type="text" className="form-control" placeholder="Duration" value={duration} onChange={(event) => setDuration(event.target.value)} />
                 {/* <select className="form-control">
                   <option>less than 60 min</option>
                   <option>60-120 min</option>
@@ -48,7 +65,7 @@ function Model() {
             <div className="col-4">
               <div className="form-group">
                 <label>Estimated budget (in $1000)</label>
-                <input type="text" className="form-control" placeholder="Budget" />
+                <input type="text" className="form-control" placeholder="Budget" value={budget} onChange={(event) => setBudget(event.target.value)} />
                 {/* <select className="form-control">
                   <option>$ 0-10K</option>
                   <option>$ 10K-1M</option>
@@ -59,15 +76,15 @@ function Model() {
           </div>
           <div className="form-group">
             <label>Director</label>
-            <input type="text" className="form-control" placeholder="Director name" />
+            <input type="text" className="form-control" placeholder="Director name" value={director} onChange={(event) => setDirector(event.target.value)} />
           </div>
           <div className="form-group">
             <label>Actors</label>
-            <input type="text" className="form-control" placeholder="Actor Name; Actor Name; " />
+            <input type="text" className="form-control" placeholder="Actor Name; Actor Name;" value={actors} onChange={(event) => setActors(event.target.value)} />
           </div>
           <div className="form-group">
             <label>Description</label>
-            <textarea className="form-control" rows="3" placeholder="Movie description"></textarea>
+            <textarea className="form-control" rows="3" placeholder="Movie description" value={description} onChange={(event) => setDescription(event.target.value)} />
           </div>
           <div className="form-group">
             <label>Upload related files here</label>
@@ -84,7 +101,7 @@ function Model() {
             </div>
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="button" className="btn btn-primary" onClick={() => console.log(data)}>Submit</button>
           </div>
         </form>
 
