@@ -16,6 +16,9 @@ RUN chmod +x /usr/local/bin/tini
 # create non-root user
 RUN groupadd -r python && useradd --shell /bin/bash -r --create-home -g python python
 
+# create pip cache for non-root user
+RUN mkdir -p /home/python/.cache/pip && chown python:python /home/python/.cache/pip
+
 # create /python folder (bind-mount location)
 RUN mkdir /python && chown python:python /python
 WORKDIR /python
