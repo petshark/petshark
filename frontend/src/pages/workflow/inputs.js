@@ -134,7 +134,7 @@ function Inputs(props) {
             </div>
           </div>
           <div className="form-group">
-            <button type="button" className="btn btn-primary" onClick={() => autoFill()}>Auto fill</button>
+            <button type="button" className="btn btn-warning" onClick={() => autoFill()}>Auto fill</button>
           </div>
           <div className="form-group">
             <button type="button" className="btn btn-primary" onClick={() => submitData()}>Submit</button>
