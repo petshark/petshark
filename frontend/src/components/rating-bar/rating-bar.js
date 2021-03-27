@@ -1,13 +1,13 @@
 import React from 'react';
 import StarBar from "@components/rating-bar/star-bar";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import {useLocation} from "react-router";
-import {inputsPath} from "@pages/workflow/inputs";
-import {resultsPath} from "@pages/workflow/results";
-import {Link} from "react-router-dom";
+import { useLocation } from "react-router";
+import { inputsPath } from "@pages/workflow/inputs";
+import { resultsPath } from "@pages/workflow/results";
+import { Link } from "react-router-dom";
 
-function RatingBar({children}) {
+function RatingBar({ children }) {
     const location = useLocation();
 
     console.log(location)
@@ -21,18 +21,18 @@ function RatingBar({children}) {
                 <div className="container-fluid">
                     <div className="w-100 d-flex flex-row align-items-center justify-content-between">
                         <div className="col-sm d-flex flex-row justify-content-start">
-                            <BackToForm currentLocation={location}/>
+                            <BackToForm currentLocation={location} />
                         </div>
                         <div className="col-sm d-flex flex-row justify-content-center">
                             <StarBar
-                                score={3}
-                                maxScore={5}
-                                starStyle={{width: '3rem', height: '3rem'}}
+                                score={children.props.prediction}
+                                maxScore={10}
+                                starStyle={{ width: '3rem', height: '3rem' }}
                                 starClassName="text-warning" // yellow stars
                             />
                         </div>
                         <div className="col-sm d-flex flex-row justify-content-end">
-                            <GoToResults currentLocation={location}/>
+                            <GoToResults currentLocation={location} />
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ function RatingBar({children}) {
     );
 }
 
-const BackToForm = ({currentLocation}) => {
+const BackToForm = ({ currentLocation }) => {
     if (!currentLocation.pathname.startsWith(resultsPath)) {
         return null;
     }
@@ -49,14 +49,14 @@ const BackToForm = ({currentLocation}) => {
     return (
         <div>
             <Link to={inputsPath} className="btn btn-primary">
-                <FontAwesomeIcon icon={faArrowLeft} className="mr-2"/>
+                <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
                 <span>Back to form</span>
             </Link>
         </div>
     );
 }
 
-const GoToResults = ({currentLocation}) => {
+const GoToResults = ({ currentLocation }) => {
     if (!currentLocation.pathname.startsWith(inputsPath)) {
         return null;
     }
@@ -65,7 +65,7 @@ const GoToResults = ({currentLocation}) => {
         <div>
             <Link to={resultsPath} className="btn btn-primary">
                 <span>Explore insights</span>
-                <FontAwesomeIcon icon={faArrowRight} className="ml-2"/>
+                <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
             </Link>
         </div>
     );

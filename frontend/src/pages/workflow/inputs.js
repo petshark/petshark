@@ -7,13 +7,14 @@ import stock1 from '@assets/stock1.jpeg';
 import stock2 from '@assets/stock2.jpeg';
 import stock3 from '@assets/stock3.jpeg';
 
+import directorsList from '@assets/directors.json';
+
 const inputsPath = '/inputs'
 export {
   inputsPath
 }
 
-function Inputs() {
-  const [title, setTitle] = React.useState("");
+function Inputs(props) {
   const [director, setDirector] = React.useState("");
   const [actors, setActors] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -21,7 +22,7 @@ function Inputs() {
   const [duration, setDuration] = React.useState("");
   const [budget, setBudget] = React.useState("");
   const data = {
-    title: title,
+    title: props.title,
     director: director,
     actors: actors,
     description: description,
@@ -30,7 +31,23 @@ function Inputs() {
     budget: budget
   }
 
+  const autoFill = () => {
+    props.setTitle("The Unstoppable");
+    setDirector("Christopher Nolan");
+    setActors("Brad Pitt; Angelina Jolie");
+    setDescription("An action packed movie.");
+    setGenres(["Action", "Drama"]);
+    setDuration(134);
+    setBudget(10000);
+  }
+
+  // console.log(props.title);
+  // console.log(props.prediction);
+
+  // console.log("Brad Pitt; Angelina Jolie".split("; "))
+
   const submitData = () => {
+    console.log(data);
     axios({
       method: 'post',
       url: 'http://localhost:7000/input',
@@ -38,6 +55,7 @@ function Inputs() {
     })
       .then(function (response) {
         console.log(response);
+        // props.setPrediction(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -56,7 +74,7 @@ function Inputs() {
               <h2 className="m-0 text-muted">Movie Idea</h2>
             </label>
             <div className="col m-auto ">
-              <input type="text" className="form-control" placeholder="Movie title" value={title} onChange={(event) => setTitle(event.target.value)} />
+              <input type="text" className="form-control" placeholder="Movie title" value={props.title} onChange={(event) => props.setTitle(event.target.value)} />
             </div>
           </div>
           <div className="form-group row">
@@ -68,7 +86,7 @@ function Inputs() {
                   <option>Drama</option>
                   <option>Comedy</option>
                 </select>
-                <small className="form-text text-muted">Choose a movie genre from the list.</small>
+                <small className="form-text text-muted">Choose more than one movie genre by holding down CTRL.</small>
               </div>
             </div>
             <div className="col-4">
@@ -84,7 +102,7 @@ function Inputs() {
             </div>
             <div className="col-4">
               <div className="form-group">
-                <label>Estimated budget (in $1000)</label>
+                <label>Estimated budget (in €1000)</label>
                 <input type="text" className="form-control" placeholder="Budget" value={budget} onChange={(event) => setBudget(event.target.value)} />
                 {/* <select className="form-control">
                   <option>$ 0-10K</option>
@@ -121,13 +139,16 @@ function Inputs() {
             </div>
           </div>
           <div className="form-group">
+            <button type="button" className="btn btn-warning" onClick={() => autoFill()}>Auto fill</button>
+          </div>
+          <div className="form-group">
             <button type="button" className="btn btn-primary" onClick={() => submitData()}>Submit</button>
           </div>
         </form>
 
         <div className="row py-3">
           <div className="col">
-            <h4>Moodboard</h4>
+            <h4>Moodboard <span className="h6 text-muted">(auto-generated)</span></h4>
           </div>
         </div>
 
