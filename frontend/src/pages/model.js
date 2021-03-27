@@ -2,63 +2,110 @@ import React from 'react';
 import Title from '@components/title';
 import Navbar from '@components/navbar';
 
+import stock1 from '@assets/stock1.jpeg';
+import stock2 from '@assets/stock2.jpeg';
+import stock3 from '@assets/stock3.jpeg';
+
 function Model() {
   return (
     <div className="model">
       <Title />
       <Navbar page={'model'} />
       <div className="container py-3">
-        <div className="row">
-          <div className="col">
-            <h3>Prediction Model Input</h3>
-          </div>
-        </div>
-
-        <p>Fill in the fields below to predict the movie success.</p>
 
         <form>
-          <div className="form-group">
-            <label htmlFor="exampleFormControlSelect1">Runtime</label>
-            <select className="form-control" id="exampleFormControlSelect1">
-              <option>less than 60</option>
-              <option>60-120</option>
-              <option>more than 120</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="formGroupExampleInput">Director</label>
-            <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="formGroupExampleInput">Actors</label>
-            <div className="actor">
-              <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input" />
+          <div className="form-group row">
+            <label className="col-auto m-auto col-form-label">
+              <h2 className="m-0 text-muted">Movie Idea</h2>
+            </label>
+            <div className="col m-auto ">
+              <input type="text" className="form-control" />
             </div>
-            <div className="actor">
-              <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input" />
+          </div>
+          <div className="form-group row">
+            <div className="col-4">
+              <div className="form-group">
+                <label>Genre</label>
+                <select className="form-control">
+                  <option>Action</option>
+                  <option>Drama</option>
+                  <option>Comedy</option>
+                </select>
+                <small className="form-text text-muted">Choose a movie genre from the list.</small>
+              </div>
             </div>
-            <button className="btn btn-primary">+ Add actor</button>
+            <div className="col-4">
+              <div className="form-group">
+                <label>Target duration</label>
+                <select className="form-control">
+                  <option>less than 60 min</option>
+                  <option>60-120 min</option>
+                  <option>more than 120 min</option>
+                </select>
+              </div>
+            </div>
+            <div className="col-4">
+              <div className="form-group">
+                <label>Estimated budget</label>
+                <select className="form-control">
+                  <option>$ 0-10K</option>
+                  <option>$ 10K-1M</option>
+                  <option>$ 1M+</option>
+                </select>
+              </div>
+            </div>
           </div>
           <div className="form-group">
-            <label htmlFor="exampleFormControlTextarea1">Description</label>
-            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label>Director</label>
+            <input type="text" className="form-control" placeholder="Director name" />
+          </div>
+          <div className="form-group">
+            <label>Actors</label>
+            <input type="text" className="form-control" placeholder="Actor Name; Actor Name; " />
+          </div>
+          <div className="form-group">
+            <label>Description</label>
+            <textarea className="form-control" rows="3" placeholder="Movie description"></textarea>
+          </div>
+          <div className="form-group">
+            <label>Upload related files here</label>
+            <div className="row">
+              <div className="col-6 m-auto">
+                <div className="custom-file">
+                  <input type="file" className="custom-file-input" />
+                  <label className="custom-file-label">Choose file</label>
+                </div>
+              </div>
+              <div className="col-6 m-auto">
+                <p className="m-0"><a href="#">Script.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Picture.png</a></p>
+              </div>
+            </div>
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary">Submit</button>
           </div>
         </form>
+
         <div className="row py-3">
           <div className="col">
-            <div className="progress">
-              <div className="progress-bar progress-bar-striped bg-warning" role="progressbar" style={{ width: "75%" }} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+            <h4>Moodboard</h4>
           </div>
         </div>
-        <div className="row">
-          <div className="col">
-            <h6>This movie has 70% chance of being a success (What is success?)</h6>
+
+        <div className="row py-3">
+          <div className="col-4 img">
+            <img src={stock1} />
+          </div>
+          <div className="col-4 img">
+            <img src={stock2} />
+          </div>
+          <div className="col-4 img">
+            <img src={stock3} />
           </div>
         </div>
 
       </div>
-    </div>
+    </div >
   );
 }
 
