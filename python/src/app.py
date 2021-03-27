@@ -29,8 +29,8 @@ def prediction():
 
     input_parameters = {'Category_to_be_predicted': 'Good', 'Director': request.json['director'], 'Duration': request.json['duration'],
                         'Description': request.json['description'], 'Genre': request.json['genres']}
-    models = blackbox.Classification_Model_Perfected.Train_Models(input_parameters)
-    prediction = blackbox.Classification_Model_Perfected.Prediction_Controller(input_parameters, models)
+    #models = blackbox.Classification_Model_Perfected.Train_Models(input_parameters)
+    prediction = blackbox.Classification_Model_Perfected.Prediction_Controller(input_parameters)
 
     class NumpyArrayEncoder(JSONEncoder):
         def default(self, obj):
@@ -41,6 +41,33 @@ def prediction():
     # Serialization
     encodedArray = {"prediction": prediction}
     encodedData = json.dumps(encodedArray, cls=NumpyArrayEncoder) 
+    return encodedData
+
+@app.route('/single-prediction', methods = ['POST', 'GET'])
+@cross_origin()
+def singlePrediction():
+    # director = request.args.get('director')
+    # description = request.args.get('description')
+    # genres = request.args.get('genres')
+    # duration = request.args.get('duration')
+    # title = request.args.get('title')
+    # actors = request.args.get('actors')
+    # budget = request.args.get('budget')
+
+    input_parameters = {'Category_to_be_predicted': 'Good', 'Director': request.json['director'], 'Duration': request.json['duration'],
+                        'Description': request.json['description'], 'Genre': request.json['genres']}
+    #models = blackbox.Classification_Model_Perfected.Train_Models(input_parameters)
+    prediction = blackbox.Classification_Model_Perfected.Prediction_Controller_Single(input_parameters, request.json['category'])
+
+    class NumpyArrayEncoder(JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, numpy.ndarray):
+                return obj.tolist()
+            return JSONEncoder.default(self, obj)
+
+    # Serialization
+    encodedArray = {"prediction": prediction}
+    encodedData = json.dumps(encodedArray, cls=NumpyArrayEncoder)
     return encodedData
 
 
