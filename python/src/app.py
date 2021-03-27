@@ -1,5 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
+import json
+from json import JSONEncoder
+import numpy
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -29,12 +32,16 @@ def prediction():
     models = blackbox.Classification_Model_Perfected.Train_Models(input_parameters)
     prediction = blackbox.Classification_Model_Perfected.Prediction_Controller(input_parameters, models)
 
-    json = {
-        'category': prediction.Category,
-        'probability': prediction.Probability
-    }
+    class NumpyArrayEncoder(JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, numpy.ndarray):
+                return obj.tolist()
+            return JSONEncoder.default(self, obj)
 
-    return jsonify(json)
+    # Serialization
+    encodedArray = {"prediction": prediction}
+    encodedData = json.dumps(encodedArray, cls=NumpyArrayEncoder) 
+    return encodedData
 
 
 if __name__ == '__main__':
