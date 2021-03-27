@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Title from '@components/title';
 import Navbar from '@components/navbar';
 
@@ -20,13 +21,27 @@ function Inputs() {
   const [duration, setDuration] = React.useState("");
   const [budget, setBudget] = React.useState("");
   const data = {
-    "title": title,
-    "director": director,
-    "actors": actors,
-    "description": description,
-    "genres": genres,
-    "duration": duration,
-    "budget": budget
+    title: title,
+    director: director,
+    actors: actors,
+    description: description,
+    genres: genres,
+    duration: duration,
+    budget: budget
+  }
+
+  const submitData = () => {
+    axios({
+      method: 'post',
+      url: 'http://localhost:7000/input',
+      data: data
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   return (
