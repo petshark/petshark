@@ -1,5 +1,10 @@
 .model {
 
+    .form-group .control-label:after {
+        content:"*";
+        color:red;
+    }
+
     img {
         width: 100%;
     }

@@ -7,6 +7,8 @@ import stock1 from '@assets/stock1.jpeg';
 import stock2 from '@assets/stock2.jpeg';
 import stock3 from '@assets/stock3.jpeg';
 
+import directorsList from '@assets/directors.json';
+
 const inputsPath = '/inputs'
 export {
   inputsPath
@@ -41,6 +43,8 @@ function Inputs(props) {
   }
 
   console.log(props.prediction);
+
+  console.log("Brad Pitt; Angelina Jolie".split("; "))
 
   const submitData = () => {
     axios({

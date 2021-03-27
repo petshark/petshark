@@ -13,7 +13,7 @@ import Inputs, { inputsPath } from "@pages/workflow/inputs";
 import Results, { resultsPath } from "@pages/workflow/results";
 
 function App() {
-    const [prediction, setPrediction] = React.useState(1);
+    const [prediction, setPrediction] = React.useState(5);
 
     return (
         <Router basename={process.env.ROUTER_BASENAME}>
