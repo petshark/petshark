@@ -7,8 +7,6 @@ import stock1 from '@assets/stock1.jpeg';
 import stock2 from '@assets/stock2.jpeg';
 import stock3 from '@assets/stock3.jpeg';
 
-import directorsList from '@assets/directors.json';
-
 const inputsPath = '/inputs'
 export {
   inputsPath
@@ -21,14 +19,31 @@ function Inputs(props) {
   const [genres, setGenres] = React.useState([]);
   const [duration, setDuration] = React.useState("");
   const [budget, setBudget] = React.useState("");
+
   const data = {
-    title: props.title,
     director: director,
-    actors: actors,
     description: description,
-    genres: genres,
+    genres: genres.join(", "),
     duration: duration,
-    budget: budget
+    // title: props.title,
+    // actors: actors,
+    // budget: budget
+  }
+
+  const submitData = () => {
+    console.log(data);
+    axios({
+      method: 'post',
+      url: 'http://localhost:7000/prediction',
+      data: data
+    })
+      .then(function (response) {
+        console.log(response);
+        props.setPrediction(response.data.prediction);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   const autoFill = () => {
@@ -39,27 +54,6 @@ function Inputs(props) {
     setGenres(["Action", "Drama"]);
     setDuration(134);
     setBudget(10000);
-  }
-
-  // console.log(props.title);
-  // console.log(props.prediction);
-
-  // console.log("Brad Pitt; Angelina Jolie".split("; "))
-
-  const submitData = () => {
-    console.log(data);
-    axios({
-      method: 'post',
-      url: 'http://localhost:7000/input',
-      data: data
-    })
-      .then(function (response) {
-        console.log(response);
-        // props.setPrediction(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   return (

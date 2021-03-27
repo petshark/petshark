@@ -7,7 +7,12 @@ export {
     resultsPath
 }
 
+
 function Results(props) {
+    const makeList = (array) => {
+        return array.map((element, index) => <li key={index}>{element}</li>)
+    }
+
     return (
         <div className="result">
             <Title />
@@ -24,16 +29,25 @@ function Results(props) {
                     </div>
                 </fieldset>
 
-                <div className="row py-3">
+                {/* <div className="row py-3">
                     <div className="col">
                         <div className="progress">
                             <div className="progress-bar progress-bar-striped bg-warning" role="progressbar" style={{ width: (props.prediction * 10) + '%' }} aria-valuenow={props.prediction} aria-valuemin="0" aria-valuemax="10"></div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="row">
-                    <div className="col">
-                        <h6>This movie has a predicted rating of <b>{props.prediction}</b>.</h6>
+                    <div className="col-auto">
+                        <h6>Prediction categories:</h6>
+                        <ul>
+                            {props.prediction.Category && makeList(props.prediction.Category)}
+                        </ul>
+                    </div>
+                    <div className="col-auto">
+                        <h6>Probabilities for each category:</h6>
+                        <ul>
+                            {props.prediction.Category && makeList(props.prediction.Probability)}
+                        </ul>
                     </div>
                 </div>
 

@@ -16,19 +16,19 @@ def hello():
     return 'Hello World'
 
 
-@app.route('/prediction')
+@app.route('/prediction', methods = ['POST', 'GET'])
 @cross_origin()
 def prediction():
-    title = request.args.get('title')
-    director = request.args.get('director')
-    actors = request.args.get('actors')
-    description = request.args.get('description')
-    genres = request.args.get('genres')
-    duration = request.args.get('duration')
-    budget = request.args.get('budget')
+    # director = request.args.get('director')
+    # description = request.args.get('description')
+    # genres = request.args.get('genres')
+    # duration = request.args.get('duration')
+    # title = request.args.get('title')
+    # actors = request.args.get('actors')
+    # budget = request.args.get('budget')
 
-    input_parameters = {'Category_to_be_predicted': 'Good', 'Director': 'Zack Snyder', 'Duration': 120,
-                        'Description': 'A very bloody good movie', 'Genre': 'Drama, Horror'}
+    input_parameters = {'Category_to_be_predicted': 'Good', 'Director': request.json['director'], 'Duration': request.json['duration'],
+                        'Description': request.json['description'], 'Genre': request.json['genres']}
     models = blackbox.Classification_Model_Perfected.Train_Models(input_parameters)
     prediction = blackbox.Classification_Model_Perfected.Prediction_Controller(input_parameters, models)
 
