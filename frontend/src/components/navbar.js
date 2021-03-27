@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Navbar(props) {
     return (
         <div className="container-fluid p-0">
-            <nav className="navbar navbar-expand navbar-dark bg-dark">
+            <nav className="navbar navbar-expand navbar-dark bg-primary">
                 <div className="container px-2">
                     <div className="row">
                         <div className="col">
