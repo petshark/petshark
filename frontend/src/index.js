@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "@styles/main.scss";
 
 import Home from '@pages/home';
-import Stuff from '@pages/stuff';
+import Model from '@pages/model';
 import About from '@pages/about';
 
 ReactDOM.render(
@@ -15,8 +15,8 @@ ReactDOM.render(
         <Route exact path="/">
             <Home />
         </Route>
-        <Route path="/stuff">
-            <Stuff />
+        <Route path="/model">
+            <Model />
         </Route>
         <Route path="/about">
             <About />
