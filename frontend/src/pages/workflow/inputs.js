@@ -12,7 +12,7 @@ export {
   inputsPath
 }
 
-function Inputs() {
+function Inputs(props) {
   const [title, setTitle] = React.useState("");
   const [director, setDirector] = React.useState("");
   const [actors, setActors] = React.useState("");
@@ -30,6 +30,8 @@ function Inputs() {
     budget: budget
   }
 
+  console.log(props.prediction);
+
   const submitData = () => {
     axios({
       method: 'post',
@@ -38,6 +40,7 @@ function Inputs() {
     })
       .then(function (response) {
         console.log(response);
+        // props.setPrediction(response);
       })
       .catch(function (error) {
         console.log(error);

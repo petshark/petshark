@@ -7,7 +7,7 @@ export {
     resultsPath
 }
 
-function Results() {
+function Results(props) {
     return (
         <div className="result">
             <Title />
@@ -22,7 +22,7 @@ function Results() {
                 <div className="row py-3">
                     <div className="col">
                         <div className="progress">
-                            <div className="progress-bar progress-bar-striped bg-warning" role="progressbar" style={{ width: "75%" }} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div className="progress-bar progress-bar-striped bg-warning" role="progressbar" style={{ width: (props.prediction * 10) }} aria-valuenow={props.prediction} aria-valuemin="0" aria-valuemax="10"></div>
                         </div>
                     </div>
                 </div>
