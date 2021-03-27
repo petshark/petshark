@@ -8,6 +8,7 @@ import "@styles/main.scss";
 
 import Home from '@pages/home';
 import Model from '@pages/model';
+import Result from '@pages/result';
 import About from '@pages/about';
 
 ReactDOM.render(
@@ -17,6 +18,9 @@ ReactDOM.render(
         </Route>
         <Route path="/model">
             <Model />
+        </Route>
+        <Route path="/result">
+            <Result />
         </Route>
         <Route path="/about">
             <About />
