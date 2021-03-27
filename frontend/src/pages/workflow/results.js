@@ -2,7 +2,12 @@ import React from 'react';
 import Title from '@components/title';
 import Navbar from '@components/navbar';
 
-function Result() {
+const resultsPath = '/results'
+export {
+    resultsPath
+}
+
+function Results() {
     return (
         <div className="result">
             <Title />
@@ -32,4 +37,4 @@ function Result() {
     );
 }
 
-export default Result;
+export default Results;

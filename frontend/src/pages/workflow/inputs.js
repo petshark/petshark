@@ -7,7 +7,12 @@ import stock1 from '@assets/stock1.jpeg';
 import stock2 from '@assets/stock2.jpeg';
 import stock3 from '@assets/stock3.jpeg';
 
-function Model() {
+const inputsPath = '/inputs'
+export {
+  inputsPath
+}
+
+function Inputs() {
   const [title, setTitle] = React.useState("");
   const [director, setDirector] = React.useState("");
   const [actors, setActors] = React.useState("");
@@ -143,4 +148,4 @@ function Model() {
   );
 }
 
-export default Model;
+export default Inputs;
