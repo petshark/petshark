@@ -21,6 +21,7 @@ RUN groupadd -r python && useradd --shell /bin/bash -r --create-home -g python p
 # install code
 COPY ./python/src /python/src
 COPY ./python/requirements.txt /python/requirements.txt
+RUN git submodule update --init --recursive
 RUN [ "python3", "-m", "pip", "install", "-r", "requirements.txt" ]
 
 ENTRYPOINT [ "gosu", "python:python", "tini", "--" ]
