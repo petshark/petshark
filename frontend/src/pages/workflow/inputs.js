@@ -121,7 +121,7 @@ function Inputs() {
             </div>
           </div>
           <div className="form-group">
-            <button type="button" className="btn btn-primary" onClick={() => submitData()}>Submit</button>
+            <button type="button" className="btn btn-primary" onClick={() => console.log(data)}>Submit</button>
           </div>
         </form>
 
