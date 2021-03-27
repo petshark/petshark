@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from '@src/axios.config';
+import axios from '@src/spring-axios.config';
 import Title from '@components/title';
 import Navbar from '@components/navbar';
 import FancyButton from '@components/fancyButton';
