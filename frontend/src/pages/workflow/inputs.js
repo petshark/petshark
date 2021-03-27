@@ -15,7 +15,6 @@ export {
 }
 
 function Inputs(props) {
-  const [title, setTitle] = React.useState("");
   const [director, setDirector] = React.useState("");
   const [actors, setActors] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -23,7 +22,7 @@ function Inputs(props) {
   const [duration, setDuration] = React.useState("");
   const [budget, setBudget] = React.useState("");
   const data = {
-    title: title,
+    title: props.title,
     director: director,
     actors: actors,
     description: description,
@@ -33,7 +32,7 @@ function Inputs(props) {
   }
 
   const autoFill = () => {
-    setTitle("The Unstoppable");
+    props.setTitle("The Unstoppable");
     setDirector("Christopher Nolan");
     setActors("Brad Pitt; Angelina Jolie");
     setDescription("An action packed movie.");
@@ -42,11 +41,13 @@ function Inputs(props) {
     setBudget(10000);
   }
 
-  console.log(props.prediction);
+  // console.log(props.title);
+  // console.log(props.prediction);
 
-  console.log("Brad Pitt; Angelina Jolie".split("; "))
+  // console.log("Brad Pitt; Angelina Jolie".split("; "))
 
   const submitData = () => {
+    console.log(data);
     axios({
       method: 'post',
       url: 'http://localhost:7000/input',
@@ -73,7 +74,7 @@ function Inputs(props) {
               <h2 className="m-0 text-muted">Movie Idea</h2>
             </label>
             <div className="col m-auto ">
-              <input type="text" className="form-control" placeholder="Movie title" value={title} onChange={(event) => setTitle(event.target.value)} />
+              <input type="text" className="form-control" placeholder="Movie title" value={props.title} onChange={(event) => props.setTitle(event.target.value)} />
             </div>
           </div>
           <div className="form-group row">
@@ -85,7 +86,7 @@ function Inputs(props) {
                   <option>Drama</option>
                   <option>Comedy</option>
                 </select>
-                <small className="form-text text-muted">Choose a movie genre from the list.</small>
+                <small className="form-text text-muted">Choose more than one movie genre by holding down CTRL.</small>
               </div>
             </div>
             <div className="col-4">
@@ -147,7 +148,7 @@ function Inputs(props) {
 
         <div className="row py-3">
           <div className="col">
-            <h4>Moodboard</h4>
+            <h4>Moodboard <span className="h6 text-muted">(auto-generated)</span></h4>
           </div>
         </div>
 

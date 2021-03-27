@@ -13,11 +13,16 @@ function Results(props) {
             <Title />
             <Navbar page={'result'} />
             <div className="container py-3">
-                <div className="row">
-                    <div className="col">
-                        <h3>Prediction Model Output</h3>
+                <fieldset disabled>
+                    <div className="form-group row">
+                        <label className="col-auto m-auto col-form-label">
+                            <h2 className="m-0 text-muted">Movie Idea</h2>
+                        </label>
+                        <div className="col m-auto ">
+                            <input type="text" className="form-control" placeholder="Movie title" value={props.title} onChange={(event) => props.setTitle(event.target.value)} />
+                        </div>
                     </div>
-                </div>
+                </fieldset>
 
                 <div className="row py-3">
                     <div className="col">

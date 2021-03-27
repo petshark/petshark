@@ -13,6 +13,7 @@ import Inputs, { inputsPath } from "@pages/workflow/inputs";
 import Results, { resultsPath } from "@pages/workflow/results";
 
 function App() {
+    const [title, setTitle] = React.useState("");
     const [prediction, setPrediction] = React.useState(5);
 
     return (
@@ -25,12 +26,12 @@ function App() {
             </Route>
             <Route path={inputsPath}>
                 <RatingBar prediction={prediction} >
-                    <Inputs prediction={prediction} setPrediction={setPrediction} />
+                    <Inputs prediction={prediction} setPrediction={setPrediction} title={title} setTitle={setTitle} />
                 </RatingBar>
             </Route>
             <Route path={resultsPath}>
                 <RatingBar prediction={prediction} >
-                    <Results prediction={prediction} />
+                    <Results prediction={prediction} title={title} />
                 </RatingBar>
             </Route>
         </Router>
