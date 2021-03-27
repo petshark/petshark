@@ -48,7 +48,7 @@ services:
       - pip_cache:/root/.cache/pip # pip cache for root
       - pip_cache:/home/python/.cache/pip # pip cache for non-root
     ports:
-      - ${DC_PYTHON_PORT}:6000
+      - ${DC_PYTHON_PORT}:7000
     environment:
       # Change uid and gid of non-root user (useful when working with bind-mounts)
       PYTHON_UID: ${PYTHON_UID}
