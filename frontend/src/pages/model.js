@@ -19,14 +19,14 @@ function Model() {
               <h2 className="m-0 text-muted">Movie Idea</h2>
             </label>
             <div className="col m-auto ">
-              <input type="text" className="form-control" />
+              <input type="text" className="form-control" placeholder="Movie title" />
             </div>
           </div>
           <div className="form-group row">
             <div className="col-4">
               <div className="form-group">
                 <label>Genre</label>
-                <select className="form-control">
+                <select className="form-control" multiple>
                   <option>Action</option>
                   <option>Drama</option>
                   <option>Comedy</option>
@@ -36,22 +36,24 @@ function Model() {
             </div>
             <div className="col-4">
               <div className="form-group">
-                <label>Target duration</label>
-                <select className="form-control">
+                <label>Target duration (in minutes)</label>
+                <input type="text" className="form-control" placeholder="Duration" />
+                {/* <select className="form-control">
                   <option>less than 60 min</option>
                   <option>60-120 min</option>
                   <option>more than 120 min</option>
-                </select>
+                </select> */}
               </div>
             </div>
             <div className="col-4">
               <div className="form-group">
-                <label>Estimated budget</label>
-                <select className="form-control">
+                <label>Estimated budget (in $1000)</label>
+                <input type="text" className="form-control" placeholder="Budget" />
+                {/* <select className="form-control">
                   <option>$ 0-10K</option>
                   <option>$ 10K-1M</option>
                   <option>$ 1M+</option>
-                </select>
+                </select> */}
               </div>
             </div>
           </div>
