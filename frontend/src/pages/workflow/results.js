@@ -28,7 +28,7 @@ function Results(props) {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <h6>This movie has 70% chance of being a success (What is success?)</h6>
+                        <h6>This movie has a predicted rating of <b>{props.prediction}</b>.</h6>
                     </div>
                 </div>
 

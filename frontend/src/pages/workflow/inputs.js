@@ -30,6 +30,16 @@ function Inputs(props) {
     budget: budget
   }
 
+  const autoFill = () => {
+    setTitle("The Unstoppable");
+    setDirector("Christopher Nolan");
+    setActors("Brad Pitt; Angelina Jolie");
+    setDescription("An action packed movie.");
+    setGenres(["Action", "Drama"]);
+    setDuration(134);
+    setBudget(10000);
+  }
+
   console.log(props.prediction);
 
   const submitData = () => {
@@ -87,7 +97,7 @@ function Inputs(props) {
             </div>
             <div className="col-4">
               <div className="form-group">
-                <label>Estimated budget (in $1000)</label>
+                <label>Estimated budget (in €1000)</label>
                 <input type="text" className="form-control" placeholder="Budget" value={budget} onChange={(event) => setBudget(event.target.value)} />
                 {/* <select className="form-control">
                   <option>$ 0-10K</option>
@@ -122,6 +132,9 @@ function Inputs(props) {
                 <p className="m-0"><a href="#">Script.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Picture.png</a></p>
               </div>
             </div>
+          </div>
+          <div className="form-group">
+            <button type="button" className="btn btn-primary" onClick={() => autoFill()}>Auto fill</button>
           </div>
           <div className="form-group">
             <button type="button" className="btn btn-primary" onClick={() => submitData()}>Submit</button>
