@@ -9,6 +9,9 @@ import "@styles/main.scss";
 import Home from '@pages/home';
 import Stuff from '@pages/stuff';
 import About from '@pages/about';
+import RatingBar from "@components/rating-bar/rating-bar";
+import Inputs, {inputsPath} from "@pages/workflow/inputs";
+import Results, {resultsPath} from "@pages/workflow/results";
 
 ReactDOM.render(
     <Router basename={process.env.ROUTER_BASENAME}>
@@ -20,6 +23,16 @@ ReactDOM.render(
         </Route>
         <Route path="/about">
             <About />
+        </Route>
+        <Route path={inputsPath}>
+            <RatingBar>
+                <Inputs/>
+            </RatingBar>
+        </Route>
+        <Route path={resultsPath}>
+            <RatingBar>
+                <Results/>
+            </RatingBar>
         </Route>
     </Router>,
     document.getElementById('root')
