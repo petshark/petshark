@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "@styles/main.scss";
 
 import Home from '@pages/home';
-import Stuff from '@pages/stuff';
+import Model from '@pages/model';
+import Result from '@pages/result';
 import About from '@pages/about';
 import RatingBar from "@components/rating-bar/rating-bar";
 import Inputs, {inputsPath} from "@pages/workflow/inputs";
@@ -18,8 +19,11 @@ ReactDOM.render(
         <Route exact path="/">
             <Home />
         </Route>
-        <Route path="/stuff">
-            <Stuff />
+        <Route path="/model">
+            <Model />
+        </Route>
+        <Route path="/result">
+            <Result />
         </Route>
         <Route path="/about">
             <About />
