@@ -25,7 +25,7 @@ function RatingBar({ children }) {
                         </div>
                         <div className="col-sm d-flex flex-row justify-content-center">
                             <StarBar
-                                score={children.props.prediction}
+                                score={children.props.prediction.Probability && Math.ceil(children.props.prediction.Probability.reduce((a, b) => a + b) / children.props.prediction.Probability.length)}
                                 maxScore={10}
                                 starStyle={{ width: '3rem', height: '3rem' }}
                                 starClassName="text-warning" // yellow stars
