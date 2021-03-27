@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {inputsPath} from "@pages/workflow/inputs";
-import {resultsPath} from "@pages/workflow/results";
+import { inputsPath } from "@pages/workflow/inputs";
+import { resultsPath } from "@pages/workflow/results";
 
 function Navbar(props) {
     return (
@@ -14,7 +14,7 @@ function Navbar(props) {
                                 <li className={props.page === 'home' ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/">Home</Link></li>
                                 <li className={props.page === 'model' ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to={inputsPath}>Input</Link></li>
                                 <li className={props.page === 'result' ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to={resultsPath}>Result</Link></li>
-                                <li className={props.page === 'about' ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/about">About</Link></li>
+                                {/* <li className={props.page === 'about' ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/about">About</Link></li> */}
                             </ul>
                         </div>
                     </div>
