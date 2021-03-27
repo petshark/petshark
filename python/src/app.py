@@ -29,11 +29,12 @@ def prediction():
     models = blackbox.Classification_Model_Perfected.Train_Models(input_parameters)
     prediction = blackbox.Classification_Model_Perfected.Prediction_Controller(input_parameters, models)
 
-    # json = {
-    #     prediction: prediction
-    # }
+    json = {
+        'category': prediction.Category,
+        'probability': prediction.Probability
+    }
 
-    return prediction
+    return jsonify(json)
 
 
 if __name__ == '__main__':
